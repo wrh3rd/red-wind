@@ -2,12 +2,12 @@
   "name": "redwind",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
-  "dependencies": {
-    "jest": "^26.3.0"
-  },
+  "main": "src/redwind.js",
+  "dependencies": {},
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.10.4"
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "jest": "^26.3.0",
+    "jsdom": "^16.4.0"
   },
   "scripts": {
     "build": "rollup --config",
@@ -15,13 +15,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wrh3rd/red-wind.git"
+    "url": "git+https://github.com/wrh3rd/redwind.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wrh3rd/red-wind/issues"
+    "url": "https://github.com/wrh3rd/redwind/issues"
   },
-  "homepage": "https://github.com/wrh3rd/red-wind#readme"
+  "homepage": "https://github.com/wrh3rd/redwind#readme"
 }
