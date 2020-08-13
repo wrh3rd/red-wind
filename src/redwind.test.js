@@ -1,23 +1,20 @@
 
 import { JSDOM } from 'jsdom';
-import { redwind } from './redwind';
+import { RedWind } from './redwind';
 
+const app = new RedWind();
 const dom = new JSDOM();
 
 global.document = dom.window.document;
 global.window = dom.window;
 
 test('creates a div element', () => {
-  let app = redwind();
-
   let $div = app.el('div', { 'class': 'test', 'test': 'YES!!!', 'style': 'color:green;' }, 'testing', ' this ', app.el('span', 'element'));
   expect($div).toBeDefined();
   console.log($div.outerHTML);
 });
 
 test('adding and using a module', () => {
-  let app = redwind();
-
   app.mod.add('green', (props, ...children) => {
     if (!props) {
       props = {};

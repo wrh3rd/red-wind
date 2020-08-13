@@ -3,28 +3,25 @@ import { el } from './el';
 import { mod } from './mod';
 import { mount } from './mount';
 
-let redwind = () => {
+class RedWind {
 
-  let _el;
-  let _mod = mod();
-  let _mount = mount;
+  constructor() {
 
-  _el = (tag, props, ...children) => {
+    this.mod = mod();
+    this.mount = mount;
 
-    if (_mod.has(tag)) {
-      return _mod.get(tag)(props, children);
-    }
+    this.el = (tag, props, ...children) => {
 
-    return el(tag, props, children);
+      if (this.mod.has(tag)) {
+        return this.mod.get(tag)(props, children);
+      }
 
-  };
+      return el(tag, props, children);
 
-  return {
-    el: _el,
-    mod: _mod,
-    mount: _mount
-  };
+    };
 
-};
+  }
 
-export { redwind }
+}
+
+export { RedWind }
