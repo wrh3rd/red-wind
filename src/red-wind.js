@@ -10,15 +10,15 @@ class RedWind {
     this.mod = mod();
     this.mount = mount;
 
-    this.el = (tag, props, ...children) => {
+  }
 
-      if (this.mod.has(tag)) {
-        return this.mod.get(tag)(props, children);
-      }
+  el(tag, props, ...children) {
 
-      return el(tag, props, children);
+    if (this.mod.has(tag)) {
+      return this.mod.get(tag)(props, children);
+    }
 
-    };
+    return el(tag, props, children);
 
   }
 
