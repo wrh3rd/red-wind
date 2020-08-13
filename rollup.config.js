@@ -2,14 +2,14 @@ export default {
 
   input: 'src/index.js',
   output: [{
-    file: 'dist/js/red-wind.js',
+    file: 'dist/js/redwind.js',
     format: 'iife',
     name: 'redwind'
   }, {
-    file: 'dist/cjs/red-wind.js',
+    file: 'dist/cjs/redwind.js',
     format: 'cjs'
   }, {
-    file: 'dist/es/red-wind.js',
+    file: 'dist/es/redwind.js',
     format: 'es'
   }]
 

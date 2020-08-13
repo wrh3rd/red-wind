@@ -1,6 +1,4 @@
 
-import { modules } from '../modules/modules';
-
 let addChild = (el, child) => {
 
   if (child instanceof HTMLElement) {
@@ -49,10 +47,6 @@ let addProps = (el, props) => {
 
 let el = (tag, props, ...children) => {
 
-  if (modules.has(tag)) {
-    return modules.get(tag)(props, children);
-  }
-
   if (typeof props == 'string' || props instanceof HTMLElement || Array.isArray(props)) {
     children.splice(0, 0, props);
     props = null;
@@ -66,7 +60,5 @@ let el = (tag, props, ...children) => {
   return $el;
 
 };
-
-el.modules = modules;
 
 export { el };

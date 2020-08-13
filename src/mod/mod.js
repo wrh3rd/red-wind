@@ -1,5 +1,5 @@
 
-let modules = (() => {
+let mod = () => {
 
   let addModule, getModule, hasModule;
   let list = {};
@@ -34,6 +34,6 @@ let modules = (() => {
     'has': hasModule
   }
 
-})();
+};
 
-export { modules }
+export { mod }
