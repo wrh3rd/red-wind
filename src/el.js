@@ -47,7 +47,7 @@ let addProps = (el, props) => {
 
 let el = (tag, props, ...children) => {
 
-  if (typeof props == 'string' || props instanceof HTMLElement || Array.isArray(props)) {
+  if (typeof props === 'number' || typeof props === 'string' || props instanceof HTMLElement || Array.isArray(props)) {
     children.splice(0, 0, props);
     props = null;
   }

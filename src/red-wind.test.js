@@ -9,13 +9,13 @@ global.document = dom.window.document;
 global.window = dom.window;
 
 test('creates a div element', () => {
-  let $div = app.el('div', { 'class': 'test', 'test': 'YES!!!', 'style': 'color:green;' }, 'testing', ' this ', app.el('span', 'element'));
+  let $div = app.el('div', { 'class': 'test', 'test': 'YES!!!', 'style': 'color:green;' }, 1, ': testing', ' this ', app.el('span', 'element'));
   expect($div).toBeDefined();
   console.log($div.outerHTML);
 });
 
 test('creates a div element and mounts to body', () => {
-  let $div = app.el('div', { 'class': 'test', 'test': 'YES!!!', 'style': 'color:green;' }, 'testing', ' this ', app.el('span', 'element'));
+  let $div = app.el('div', { 'class': 'test', 'test': 'YES!!!', 'style': 'color:green;' }, 2, ': testing', ' this ', app.el('span', 'element'));
   expect($div).toBeDefined();
   app.mount(document.body, $div);
   console.log(document.body.outerHTML);
