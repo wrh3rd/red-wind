@@ -18,8 +18,8 @@
     "url": "git+https://github.com/wrh3rd/red-wind.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "William R. Hansen <wrh3rd@posteo.net",
+  "license": "GPL",
   "bugs": {
     "url": "https://github.com/wrh3rd/red-wind/issues"
   },
