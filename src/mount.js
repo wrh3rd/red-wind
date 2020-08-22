@@ -1,7 +1,7 @@
 
 import { el } from './el';
 
-let mount = (target, source) => {
+const mount = (target, source) => {
 
   if (target.tagName === 'BODY') {
     if (source.tagName !== 'BODY') {

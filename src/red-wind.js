@@ -12,13 +12,15 @@ class RedWind {
 
   }
 
-  el(tag, props, ...children) {
+  el(tag, ...args) {
 
     if (this.mod.has(tag)) {
-      return this.mod.get(tag)(props, children);
+      return this.mod.get(tag).apply(null, args);
     }
 
-    return el(tag, props, children);
+    args.splice(0, 0, tag);
+
+    return el.apply(null, args);
 
   }
 

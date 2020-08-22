@@ -1,5 +1,5 @@
 
-let mod = () => {
+const mod = () => {
 
   let addModule, getModule, hasModule;
   let list = {};

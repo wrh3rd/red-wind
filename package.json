@@ -10,7 +10,6 @@
     "jsdom": "^16.4.0"
   },
   "scripts": {
-    "build": "rollup --config",
     "test": "jest"
   },
   "repository": {

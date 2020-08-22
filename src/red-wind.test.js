@@ -8,31 +8,58 @@ const dom = new JSDOM();
 global.document = dom.window.document;
 global.window = dom.window;
 
-test('creates a div element', () => {
-  let $div = app.el('div', { 'class': 'test', 'test': 'YES!!!', 'style': 'color:green;' }, 1, ': testing', ' this ', app.el('span', 'element'));
+test('create an element', () => {
+  let $div = app.el('div');
   expect($div).toBeDefined();
-  console.log($div.outerHTML);
 });
 
-test('creates a div element and mounts to body', () => {
-  let $div = app.el('div', { 'class': 'test', 'test': 'YES!!!', 'style': 'color:green;' }, 2, ': testing', ' this ', app.el('span', 'element'));
+test('create an element with green text \'TEST\'', () => {
+  let $div = app.el('div', { 'style': 'color:green;' }, 'TEST');
+  expect($div).toBeDefined();
+  expect($div.style.color).toBe('green');
+  expect($div.innerHTML).toBe('TEST');
+});
+
+test('create an element and mounts to body', () => {
+  let $div = app.el('div', { 'style': 'color:green;' }, 'TEST');
   expect($div).toBeDefined();
   app.mount(document.body, $div);
-  console.log(document.body.outerHTML);
+  expect(document.body.innerHTML).toBe('<div style="color:green;">TEST</div>');
 });
 
-test('adding and using a module', () => {
-  app.mod.add('green', (props, ...children) => {
-    if (!props) {
-      props = {};
-    }
+test('create an element with one child element', () => {
+  let $div = app.el('div', app.el('span', 'TEST'));
+  expect($div).toBeDefined();
+  expect($div.innerHTML).toBe('<span>TEST</span>');
+});
 
-    props['class'] = 'green';
+test('create an element with more than one children', () => {
+  let $div = app.el('div', app.el('span', 'TEST'), ' ', app.el('span', 'ME'));
+  expect($div).toBeDefined();
+  expect($div.innerHTML).toBe('<span>TEST</span> <span>ME</span>');
+});
 
-    return app.el('div', props, children);
+test('create an element with more than one children and one is clickable', () => {
+  let $span = app.el('span', 'TEST');
+  $span.click = () => { return true; }
+
+  let $div = app.el('div', $span, ' ', app.el('span', 'ME'));
+  expect($div).toBeDefined();
+  expect($div.innerHTML).toBe('<span>TEST</span> <span>ME</span>');
+  expect($div.children[0].click).toBeDefined();
+});
+
+test('create and use a module', () => {
+  app.mod.add('green', (...args) => {
+    let props = { 'class': 'green' };
+
+    args.splice(0, 0, 'div');
+    args.splice(1, 0, props);
+
+    return app.el.apply(app, args);
   });
 
-  let $green = app.el('green');
+  let $green = app.el('green', 'This is green');
   expect($green).toBeDefined();
-  console.log($green.outerHTML);
+  expect($green.outerHTML).toBe('<div class="green">This is green</div>');
 });
